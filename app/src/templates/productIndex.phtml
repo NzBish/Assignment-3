@@ -1,0 +1,27 @@
+<?php include "header.phtml" ?>
+<!---------- Body starts --------------->
+
+<br>
+<table>
+    <tr>
+        <th>SKU</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock on Hand</th>
+        <th>Category</th>
+    </tr>
+    <?php foreach ($products as $prods) { ?>
+        <tr>
+            <td><?= $prods->getSku() ?></td>
+            <td><?= $prods->getName() ?></td>
+            <td><span class = "dollars"><?= $prods->getCost() ?></span></td>
+            <td><?= $prods->getQuantity() ?></td>
+            <td><?= $prods->getCategory() ?></td>
+        </tr>
+    <?php } ?>
+</table>
+
+
+<br>
+<!---------- Body ends -------------------->
+<?php include "footer.phtml" ?>
