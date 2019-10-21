@@ -9,7 +9,7 @@ Correct username/password should open Welcome page.
   1. Username must only contain alphanumeric characters  
   2. Username must not already exist (check asynchronously using AJAX) 
   3. Password must be between 7 and 15 alphanumeric characters and contain at least one upper case letter (no special characters allowed) 
-  4. Password and repeated password must match 
+  4. Password and repeated password must match. Todo(Tony)
 
 3.Welcome Page: A short welcome message (including user’s name) and usage instructions. 
  
