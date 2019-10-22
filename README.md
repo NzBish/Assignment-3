@@ -15,7 +15,7 @@ Correct username/password should open Welcome page.
  
 4.Search Page: A search dialog where the user can enter a query.  The query should be matched to product names and all products with a full or partial match should be displayed. If no matches found, display an appropriate message. 
  
-The search should be dynamic and bring up the results as the user types the query (use AJAX to query the server asynchronously). 
+The search should be dynamic and bring up the results as the user types the query (use AJAX to query the server asynchronously). I will try today(Chris)
  
 5.Browse Page: This part is optional. This is a common feature in web applications. Complete it if you want additional practice or experience. 
  
