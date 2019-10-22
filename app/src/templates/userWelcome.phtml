@@ -1,0 +1,13 @@
+<?php include "header.phtml" ?>
+<!---------- Body starts --------------->
+    <div>
+    <?php if (isset($_SESSION['userName'])) { ?>
+        <h1>Welcome <?php echo $_SESSION['userName'] ?></h1>
+    <?php } ?>
+    </div>
+
+    <div>
+        <p>Site Usage</p>
+    </div>
+<!---------- Body ends -------------------->
+<?php include "footer.phtml" ?>
