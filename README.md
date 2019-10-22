@@ -11,13 +11,13 @@ Correct username/password should open Welcome page.
   3. Password must be between 7 and 15 alphanumeric characters and contain at least one upper case letter (no special characters allowed) 
   4. Password and repeated password must match. Todo(Tony)
 
-3.Welcome Page: A short welcome message (including user’s name) and usage instructions. 
+3.Welcome Page: A short welcome message (including user’s name) and usage instructions. (Katie)
  
 4.Search Page: A search dialog where the user can enter a query.  The query should be matched to product names and all products with a full or partial match should be displayed. If no matches found, display an appropriate message. 
  
 The search should be dynamic and bring up the results as the user types the query (use AJAX to query the server asynchronously). I will try today(Chris)
  
-5.Browse Page: This part is optional. This is a common feature in web applications. Complete it if you want additional practice or experience. 
+5.Browse Page: This part is optional. This is a common feature in web applications. Complete it if you want additional practice or experience. (Katie)
  
 Browse page should be split into 2 panes: filter sidebar on the left and results pane to the right. Filter sidebar should contain an ‘in-stock only’ filter that limits the displayed products to ones with stock quantity > 0. Under it, place category filters. This list shoud be produced dynamically from the existing categories. The results pane should display all products in the selected categories. 
  
@@ -28,3 +28,8 @@ As the number of displayed products can be quite large and require the page to b
 7.Products: Products should include the following information: Stock Keeping Unit (SKU), Name, Cost, Category, Stock Quantity. Done(Chris)
  
 8.Presentation Front-end HTML must be styled using CSS. You are free to choose if you want to work with vanilla CSS or SCSS. If you choose SCSS, please submit SCSS files along with compiled CSS. Done using CSS(Chris)
+
+9.A report detailing your application’s (Katie)
+  Specifications
+  Design choices
+  Database schema and relations
