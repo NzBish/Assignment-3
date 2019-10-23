@@ -19,19 +19,19 @@ class SearchController extends Controller
         <tr>
             <th>SKU</th>
             <th>Name</th>
-            <th>Price</th>
-            <th>Stock on Hand</th>
+            <th>Price</th>            
             <th>Category</th>
+            <th>Stock on Hand</th>
         </tr>";
 
             foreach ($products as $prods){
                 $output .= "
                         <tr>
-                            <td>$prods[0]</td>
                             <td>$prods[1]</td>
                             <td>$prods[2]</td>
                             <td>$prods[3]</td>
                             <td>$prods[4]</td>
+                            <td>$prods[5]</td>
                             </tr>";
             }
             echo $output;
