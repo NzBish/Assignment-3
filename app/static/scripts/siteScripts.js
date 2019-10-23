@@ -7,6 +7,7 @@ $(document).ready(function() {
             if (!regExpr.test(uname)) {
                 $("#imgUName").attr({"src": "/static/no.png", "alt": "Username not OK"}).show();
                 $("#pUName").text("Username must only contain alphanumeric characters").show();
+                $("#createButton").prop("disabled", true);
                 return;
             }
 
@@ -21,15 +22,18 @@ $(document).ready(function() {
                     if (unique === "unique") {
                         $("#imgUName").attr({"src": "/static/yes.png", "alt": "Username OK"}).show();
                         $("#pUName").text("").hide();
+                        $("#createButton").prop("disabled", false);
                     } else {
                         $("#imgUName").attr({"src": "/static/no.png", "alt": "Username not OK"}).show();
                         $("#pUName").text("Username is not unique").show();
+                        $("#createButton").prop("disabled", true);
                     }
                 }
             });
         } else {
             $("#imgUName").attr({"src": "", "alt": ""}).hide();
             $("#pUName").text("").hide();
+            $("#createButton").prop("disabled", true);
         }
     });
 
@@ -50,6 +54,7 @@ $(document).ready(function() {
             $("#imgPassword").attr({"src": "", "alt": ""}).hide();
             $("#imgPassword2").attr({"src": "", "alt": ""}).hide();
             $("#pPassword").text("").hide();
+            $("#createButton").prop("disabled", true);
             return;
         }
 
@@ -58,6 +63,7 @@ $(document).ready(function() {
                 $("#imgPassword").attr({"src": "/static/warning.png", "alt": "Password not OK"}).show();
                 $("#imgPassword2").attr({"src": "/static/warning.png", "alt": "Password not OK"}).show();
                 $("#pPassword").text("Please re-enter your password").show();
+                $("#createButton").prop("disabled", true);
             } else {
                 $("#inputPassword2").keyup();
             }
@@ -65,6 +71,7 @@ $(document).ready(function() {
             $("#imgPassword").attr({"src": "/static/no.png", "alt": "Password not OK"}).show();
             $("#imgPassword2").attr({"src": "", "alt": ""}).hide();
             $("#pPassword").text("Password must be 7 - 14 alphanumeric characters with 1+ uppercase letters").show();
+            $("#createButton").prop("disabled", true);
         }
     });
 
@@ -81,18 +88,24 @@ $(document).ready(function() {
         }
 
         if (passwd2 !== "") {
+            if ($("#pPassword").text() === "Password must be 7 - 14 alphanumeric characters with 1+ uppercase letters") {
+                return;
+            }
             if (passwd === passwd2) {
                 $("#imgPassword").attr({"src": "/static/yes.png", "alt": "Password OK"}).show();
                 $("#imgPassword2").attr({"src": "/static/yes.png", "alt": "Password OK"}).show();
                 $("#pPassword").text("").hide();
+                $("#createButton").prop("disabled", false);
             } else {
                 $("#imgPassword").attr({"src": "/static/no.png", "alt": "Password not OK"}).show();
                 $("#imgPassword2").attr({"src": "/static/no.png", "alt": "Password not OK"}).show();
                 $("#pPassword").text("Passwords do not match").show();
+                $("#createButton").prop("disabled", true);
             }
         } else {
             $("#imgPassword2").attr({"src": "", "alt": ""}).hide();
             $("#inputPassword").keyup();
+            $("#createButton").prop("disabled", true);
         }
 
         $("#pPassword2").text("").hide();

@@ -4,12 +4,12 @@ header {
     background-color: #1D1D2C;
 }
 header h1 {
-    color: #ffffff;
+    color: white;
     font-size: 40px;
 }
 header a {
     float: left;
-    color: #ffffff;
+    color: white;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -18,21 +18,8 @@ header a {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
 }
-a.prettybutton {
-    color: #3CBCC3;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    line-height: 25px;
-    border-radius: 4px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-}
-p {
-    color: #ffffff;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+header p {
+    color: white;
 }
 header a:hover, .prettybutton:hover, table a:hover {
     background-color: #ddd;
@@ -45,9 +32,29 @@ header a.active, .prettybutton.active, table a.active {
 .header-right {
     float: right;
 }
+
+a.prettybutton {
+    color: #3CBCC3;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    line-height: 25px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+p {
+    color: black;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
 body {
     background-color: #F7F4E9;
 }
+
 form {
     margin-left: 25%;
     margin-right:25%;
@@ -124,7 +131,7 @@ footer .connect div {
     padding: 24px 0 0;
 }
 footer .connect div h1 {
-    color: #FFFFFF;
+    color: white;
     float: left;
     font-size: 23px;
     font-weight: normal;
