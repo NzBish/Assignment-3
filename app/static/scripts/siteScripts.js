@@ -42,13 +42,8 @@ $(document).ready(function() {
 
     $("#searchProducts").keyup(function(){
         var txt = $(this).val();
-        if(txt!='')
+        if(txt!=='')
         {
-
-        }
-        else
-        {
-            $("#results").html('');
             $.ajax({
                 url:"/retrieve",
                 method:"post",
@@ -59,6 +54,11 @@ $(document).ready(function() {
                     $("#results").html(data);
                 }
             });
+
+        }
+        else
+        {
+            $("tbody").html('');
 
         }
     });

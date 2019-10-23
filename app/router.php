@@ -76,7 +76,7 @@ $collection->attachRoute(
     new Route(
         '/retrieve/',
         array(
-            '_controller' => 'ktc\a2\controller\ProductController::searchAction',
+            '_controller' => 'ktc\a2\controller\SearchController::searchAction',
             'methods' => 'POST',
             'name' => 'retrieve'
         )

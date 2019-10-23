@@ -48,6 +48,18 @@ header a.active, .prettybutton.active, table a.active {
 body {
     background-color: #F7F4E9;
 }
+form{
+    margin-left: 35%;
+    margin-right:25%;
+    width: 50%;
+}
+input{
+    width: 40%;
+    padding: 4px 6px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+}
 table, th, td {
     border: 1px solid #ddd;
     padding: 15px;

@@ -37,30 +37,5 @@ class ProductController extends Controller
         }
     }
 
-    public function searchAction(){
-       // session_start();
-        $output = '';
-      //  if (isset($_SESSION['userName'])) {
-            try {
-                $collection = new ProductCollectionModel();
-                $products = $collection->retrieveProduct($_POST["search"]);
-                foreach ($products as $prods){
-                    $output .= "
-                        <tr>
-                            <td>$prods[0]</td>
-                            <td>$prods[1]</td>
-                            <td>$prods[2]</td>
-                            <td>$prods[3]</td>
-                            <td>$prods[4]</td>
-                            </tr>";
-                }
-                echo $output;
-            } catch (StoreException $ex) {
-                $view = new View('exception');
-                echo $view->addData("exception", $ex)->addData("back", "Home")->render();
-            }
-     //   } else {
-       //     $this->redirect('Home');
-      //  }
-    }
+
 }

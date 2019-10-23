@@ -36,13 +36,5 @@ class ProductCollectionModel extends Model
         }
     }
 
-    public function retrieveProduct($name)
-    {
-        if (!$result = $this->db->query("SELECT * FROM `product`
-                                                WHERE `prod_name` LIKE '%$name%'
-                                                ORDER by `prod_sku` ASC;")) {
-            throw new StoreException(99, 'No product found');
-        }
-        return $result->fetch_all();
-    }
+
 }
