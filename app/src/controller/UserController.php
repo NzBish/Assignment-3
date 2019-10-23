@@ -160,4 +160,16 @@ class UserController extends Controller
             echo $view->addData("exception", $ex)->addData("back", "userCreate")->render();
         }
     }
+    public function searchAction() {
+
+        session_start();
+
+        if (isset($_SESSION['userName'])) {
+            $view = new View('search');
+            echo $view->render();
+        } else {
+            $view = new View('userLogin');
+            echo $view->render();
+        }
+    }
 }

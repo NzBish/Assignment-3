@@ -72,5 +72,27 @@ $collection->attachRoute(
     )
 );
 
+$collection->attachRoute(
+    new Route(
+        '/retrieve/',
+        array(
+            '_controller' => 'ktc\a2\controller\ProductController::searchAction',
+            'methods' => 'POST',
+            'name' => 'retrieve'
+        )
+    )
+);
+
+$collection->attachRoute(
+    new Route(
+        '/search/',
+        array(
+            '_controller' => 'ktc\a2\controller\UserController::searchAction',
+            'methods' => array('GET','POST'),
+            'name' => 'search'
+        )
+    )
+);
+
 $router = new Router($collection);
 $router->setBasePath('/');

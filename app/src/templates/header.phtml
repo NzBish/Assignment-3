@@ -19,6 +19,7 @@
         <?php if (isset($_SESSION['userName'])) { ?>
         <a href= <?= $linkTo('userLogout') ?> >Log out</a>
         <a href= <?= $linkTo('productIndex') ?> >Products</a>
+        <a href= <?= $linkTo('search') ?> >Search</a>
         <?php if ($_SESSION['userName'] == "admin") { ?>
         <a href= <?= $linkTo('userIndex') ?> >Users</a>
         <?php } } ?>

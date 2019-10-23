@@ -39,4 +39,27 @@ $(document).ready(function() {
             $("#pPassword").text("").hide();
         }
     });
+
+    $("#searchProducts").keyup(function(){
+        var txt = $(this).val();
+        if(txt!='')
+        {
+
+        }
+        else
+        {
+            $("#results").html('');
+            $.ajax({
+                url:"/retrieve",
+                method:"post",
+                data:{search:txt},
+                dataType:"text",
+                success:function (data)
+                {
+                    $("#results").html(data);
+                }
+            });
+
+        }
+    });
 });
