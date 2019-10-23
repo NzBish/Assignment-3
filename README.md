@@ -11,7 +11,7 @@ Correct username/password should open Welcome page.
   3. Password must be between 7 and 15 alphanumeric characters and contain at least one upper case letter (no special characters allowed) 
   4. Password and repeated password must match. Todo(Tony)
 
-3.Welcome Page: A short welcome message (including user’s name) and usage instructions. (Katie)
+3.Welcome Page: A short welcome message (including user’s name) and usage instructions. Done(Katie)
  
 4.Search Page: A search dialog where the user can enter a query.  The query should be matched to product names and all products with a full or partial match should be displayed. If no matches found, display an appropriate message. 
  
@@ -23,7 +23,7 @@ Browse page should be split into 2 panes: filter sidebar on the left and results
  
 As the number of displayed products can be quite large and require the page to be scrolled, the left sidebar should ‘float’. i.e. stay in constant position in the window as the page is scrolled down. 
  
-6.Top Menu: Welcome, Search and Browse pages should include a menu at the top, containing company logo (linked to the Welcome page), Browse, Search and Logout links. The menu item should light up when a mouse is hovered over it. Done except for logo(Chris)
+6.Top Menu: Welcome, Search and Browse pages should include a menu at the top, containing company logo (linked to the Welcome page), Browse, Search and Logout links. The menu item should light up when a mouse is hovered over it. Done except for logo(Chris) Done Logo(Katie)
  
 7.Products: Products should include the following information: Stock Keeping Unit (SKU), Name, Cost, Category, Stock Quantity. Done(Chris)
  
