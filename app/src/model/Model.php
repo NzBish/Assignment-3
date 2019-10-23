@@ -121,10 +121,15 @@ class Model
         if (!$admin = password_hash("admin", PASSWORD_BCRYPT)) {
             throw new StoreException(99,"Failed to hash entered password");
         }
+        if (!$tim = password_hash("TheToolman", PASSWORD_BCRYPT)) {
+            throw new StoreException(99,"Failed to hash entered password");
+        }
 
         /** Strings to insert */
         $insertUser = "INSERT INTO `user` VALUES (NULL, 'admin', 'Administrator', '', '$admin',
                                                  'admin@ktc.com'),
+                                                 (NULL, 'TheToolman', 'Tim', 'Taylor', '$tim',
+                                                 'tim@homeimprovement.com'),
                                                  (NULL, 'CBishop', 'Chris', 'Bishop', '$password',
                                                   'chris@gmail.com'),
                                                  (NULL, 'MLittleLamb', 'Mary','LittleLamb', '$password', 
@@ -134,7 +139,12 @@ class Model
                                                        (NULL,'ham22','Sledge Hammer',66.00,'Hammers',2),
                                                        (NULL,'ham23','Soft-Face Hammer',24.99,'Hammers',7),
                                                        (NULL,'screw03','Flat Screwdriver',11.95,'Screwdrivers',25),
-                                                       (NULL,'screw23','Philips Screwdriver',11.95,'Screwdrivers',30);";
+                                                       (NULL,'screw23','Philips Screwdriver',11.95,'Screwdrivers',30),
+                                                       (NULL,'wren11','Allen Wrench',33.99,'Wrenches',12),
+                                                       (NULL,'wren21','Socket Wrench',50.00,'Wrenches',9),
+                                                       (NULL,'saw13','Hand Saw',15.00,'Saws',22),
+                                                       (NULL,'saw15','Hacksaw',67.95,'Saws',13),
+                                                       (NULL,'saw19','Back Saw',53.50,'Saws',19);";
 
 
         /** Check if already inserted */
