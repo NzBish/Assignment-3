@@ -36,26 +36,66 @@ $(document).ready(function() {
     $("#inputPassword").keyup(function(e) {
         var regExpr = new RegExp(/^(?=[a-zA-Z0-9]*[A-Z][a-zA-Z0-9]*)([a-zA-Z0-9]{7,14})$/);
         var passwd = $("#inputPassword").val();
+        var passwd2 = $("#inputPassword2").val();
 
-        if (e.originalEvent.getModifierState("CapsLock")) {
-            $("#imgPassword").attr({"src": "/static/warning.png", "alt": "Warning"}).show();
-            $("#pPassword").text("Caps Lock is on").show();
-            return;
+        if (e.originalEvent !== undefined) {
+            if (e.originalEvent.getModifierState("CapsLock")) {
+                $("#imgPassword").attr({"src": "/static/warning.png", "alt": "Warning"}).show();
+                $("#pPassword").text("Caps Lock is on").show();
+                return;
+            }
         }
 
         if (passwd === "") {
             $("#imgPassword").attr({"src": "", "alt": ""}).hide();
+            $("#imgPassword2").attr({"src": "", "alt": ""}).hide();
             $("#pPassword").text("").hide();
             return;
         }
 
         if (regExpr.test(passwd)) {
-            $("#imgPassword").attr({"src": "/static/yes.png", "alt": "Password OK"}).show();
-            $("#pPassword").text("").hide();
+            if (passwd2 === "") {
+                $("#imgPassword").attr({"src": "/static/warning.png", "alt": "Password not OK"}).show();
+                $("#imgPassword2").attr({"src": "/static/warning.png", "alt": "Password not OK"}).show();
+                $("#pPassword").text("Please re-enter your password").show();
+            } else {
+                $("#inputPassword2").keyup();
+            }
         } else {
             $("#imgPassword").attr({"src": "/static/no.png", "alt": "Password not OK"}).show();
+            $("#imgPassword2").attr({"src": "", "alt": ""}).hide();
             $("#pPassword").text("Password must be between 7 - 14 alphanumeric characters and contain at least one uppercase letter").show();
         }
+    });
+
+    $("#inputPassword2").keyup(function (e) {
+        var passwd = $("#inputPassword").val();
+        var passwd2 = $("#inputPassword2").val();
+
+        if (e.originalEvent !== undefined) {
+            if (e.originalEvent.getModifierState("CapsLock")) {
+                $("#imgPassword2").attr({"src": "/static/warning.png", "alt": "Warning"}).show();
+                $("#pPassword2").text("Caps Lock is on").show();
+                return;
+            }
+        }
+
+        if (passwd2 !== "") {
+            if (passwd === passwd2) {
+                $("#imgPassword").attr({"src": "/static/yes.png", "alt": "Password OK"}).show();
+                $("#imgPassword2").attr({"src": "/static/yes.png", "alt": "Password OK"}).show();
+                $("#pPassword").text("").hide();
+            } else {
+                $("#imgPassword").attr({"src": "/static/no.png", "alt": "Password not OK"}).show();
+                $("#imgPassword2").attr({"src": "/static/no.png", "alt": "Password not OK"}).show();
+                $("#pPassword").text("Passwords do not match").show();
+            }
+        } else {
+            $("#imgPassword2").attr({"src": "", "alt": ""}).hide();
+            $("#inputPassword").keyup();
+        }
+
+        $("#pPassword2").text("").hide();
     });
 
     $("#loginPassword").keyup(function (e) {
