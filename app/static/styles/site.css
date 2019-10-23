@@ -1,9 +1,9 @@
-header{
+header {
     overflow: auto;
     padding: 10px 200px;
     background-color: #1D1D2C;
 }
-header h1{
+header h1 {
     color: #ffffff;
     font-size: 40px;
 }
@@ -48,13 +48,13 @@ header a.active, .prettybutton.active, table a.active {
 body {
     background-color: #F7F4E9;
 }
-form{
-    margin-left: 35%;
+form {
+    margin-left: 25%;
     margin-right:25%;
     width: 50%;
 }
-input{
-    width: 40%;
+input {
+    width: auto;
     padding: 4px 6px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -79,6 +79,11 @@ table {
 table a {
     color: white;
     text-decoration: none;
+}
+td p {
+    font-size: small;
+    color: black;
+    display: inline;
 }
 tr:hover { background-color: #d7ebf5; }
 .dollars:before{

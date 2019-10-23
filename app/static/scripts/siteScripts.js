@@ -64,7 +64,7 @@ $(document).ready(function() {
         } else {
             $("#imgPassword").attr({"src": "/static/no.png", "alt": "Password not OK"}).show();
             $("#imgPassword2").attr({"src": "", "alt": ""}).hide();
-            $("#pPassword").text("Password must be between 7 - 14 alphanumeric characters and contain at least one uppercase letter").show();
+            $("#pPassword").text("Password must be 7 - 14 alphanumeric characters with 1+ uppercase letters").show();
         }
     });
 
