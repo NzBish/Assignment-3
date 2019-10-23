@@ -78,6 +78,12 @@ div {
     width: auto;
     text-align: center;
 }
+
+.text-center{
+    text-align: center;
+    color: #0e0e0e;
+}
+
 footer {
     background-color: #1D1D2C;
     position: fixed;

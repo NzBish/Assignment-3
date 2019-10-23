@@ -1,6 +1,8 @@
 <?php
 namespace ktc\a2\controller;
 
+use ktc\a2\view\View;
+
 /**
  * Class HomeController
  *
@@ -17,7 +19,8 @@ class HomeController extends Controller
     {
         session_start();
         if (isset($_SESSION['userName'])) {
-            $this->redirect('productIndex');
+            $view = new View('userWelcome');
+            echo $view->render();
         } else {
             $this->redirect('userLogin');
         }

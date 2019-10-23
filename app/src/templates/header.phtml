@@ -10,7 +10,9 @@
 </head>
 <body>
 <header>
-    <h1>KTC TOOLS</h1>
+    <a href=<?= $linkTo('Home') ?>>
+        <img src="../../static/KTC-logo.png" alt="KTC Logo" width="125" height="73">
+     </a>
     <div class="header-right">
         <?php if (isset($_SESSION['userName'])) { ?>
         <p>Welcome <?php echo $_SESSION['userName'] ?></p>

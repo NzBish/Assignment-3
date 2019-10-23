@@ -93,6 +93,16 @@ $collection->attachRoute(
         )
     )
 );
+$collection->attachRoute(
+    new Route(
+        '/welcome/',
+        array(
+            '_controller' => 'ktc\a2\controller\HomeController::indexAction',
+            'methods' => 'GET',
+            'name' => 'userWelcome'
+        )
+    )
+);
 
 $router = new Router($collection);
 $router->setBasePath('/');

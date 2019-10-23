@@ -27,7 +27,7 @@ class UserController extends Controller
      * - Creates and renders a userIndex template with the UserModel generator attached
      * Otherwise redirects to:
      * - UserController::loginAction if there is no user logged in
-     * - AccountController::indexAction if the logged in user is not "admin"
+     * - HomeController::indexAction if the logged in user is not "admin"
      *
      * @uses $_SESSION['userName'] to determine if the logged in user is "admin"
      */
@@ -46,7 +46,7 @@ class UserController extends Controller
                     echo $view->addData("exception", $ex)->addData("back", "Home")->render();
                 }
             } else {
-                $this->redirect('accountIndex');
+                $this->redirect('userWelcome');
             }
         } else {
             $this->redirect('userLogin');
@@ -79,7 +79,7 @@ class UserController extends Controller
                     $_SESSION['userName'] = $user->getUserName();
                     $_SESSION['userId'] = $user->getId();
                     $_SESSION['userFull'] = $user->getFirstName() . " " . $user->getLastName();
-                    $this->redirect('productIndex');
+                    $this->redirect('userWelcome');
                 } else {
                     throw new StoreException(4); // Maybe not an exception?
                 }
@@ -150,7 +150,7 @@ class UserController extends Controller
                 $_SESSION['userName'] = $user->getUserName();
                 $_SESSION['userId'] = $user->getId();
                 $_SESSION['userFull'] = $user->getFirstName() . " " . $user->getLastName();
-                $this->redirect('productIndex');
+                $this->redirect('userWelcome');
             } else {
                 $view = new View('userCreate');
                 echo $view->render();
