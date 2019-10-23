@@ -160,7 +160,27 @@ class UserController extends Controller
             echo $view->addData("exception", $ex)->addData("back", "userCreate")->render();
         }
     }
-    public function searchAction() {
+
+    public function checkAction()
+    {
+        if (!isset($_POST['checkName'])) {
+            $this->redirect('userWelcome');
+        }
+        try {
+            $user = new UserModel();
+            if ($user->check($_POST['checkName'])) {
+                echo "not unique";
+            } else {
+                echo "unique";
+            }
+        } catch (StoreException $ex) {
+            $view = new View('exception');
+            echo $view->addData("exception", $ex)->addData("back", "userWelcome")->render();
+        }
+    }
+
+    public function searchAction()
+    {
 
         session_start();
 

@@ -74,6 +74,17 @@ $collection->attachRoute(
 
 $collection->attachRoute(
     new Route(
+        '/users/check/',
+        array(
+            '_controller' => 'ktc\a2\controller\UserController::checkAction',
+            'methods' => 'POST',
+            'name' => 'userCheck'
+        )
+    )
+);
+
+$collection->attachRoute(
+    new Route(
         '/retrieve/',
         array(
             '_controller' => 'ktc\a2\controller\SearchController::searchAction',
@@ -93,6 +104,7 @@ $collection->attachRoute(
         )
     )
 );
+
 $collection->attachRoute(
     new Route(
         '/welcome/',

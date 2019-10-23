@@ -1,21 +1,51 @@
 $(document).ready(function() {
-    /*$("#inputUName").keyup(function() {
+    $("#inputUName").keyup(function() {
+        var regExpr = new RegExp(/^([a-zA-Z0-9]+)$/);
+        var uname = $("#inputUName").val();
 
-    });*/
+        if (uname !== "") {
+            if (!regExpr.test(uname)) {
+                $("#imgUName").attr({"src": "/static/no.png", "alt": "Username not OK"}).show();
+                $("#pUName").text("Username must only contain alphanumeric characters").show();
+                return;
+            }
 
-    $("#inputPassword").keyup(function() {
-        var regExpr = new RegExp("/^(?=\w*[A-Z]\w*)(\w{7,14})$/g");
+            $("#imgUName").attr({"src": "/static/loading.gif", "alt": "Loading..."}).show();
+
+            $.ajax({
+                url: "/users/check/",
+                method: "post",
+                data: {checkName: uname},
+                dataType: "text",
+                success: function(unique) {
+                    if (unique === "unique") {
+                        $("#imgUName").attr({"src": "/static/yes.png", "alt": "Username OK"}).show();
+                        $("#pUName").text("").hide();
+                    } else {
+                        $("#imgUName").attr({"src": "/static/no.png", "alt": "Username not OK"}).show();
+                        $("#pUName").text("Username is not unique").show();
+                    }
+                }
+            });
+        } else {
+            $("#imgUName").attr({"src": "", "alt": ""}).hide();
+            $("#pUName").text("").hide();
+        }
+    });
+
+    $("#inputPassword").keyup(function(e) {
+        var regExpr = new RegExp(/^(?=[a-zA-Z0-9]*[A-Z][a-zA-Z0-9]*)([a-zA-Z0-9]{7,14})$/);
         var passwd = $("#inputPassword").val();
+
+        if (e.originalEvent.getModifierState("CapsLock")) {
+            $("#imgPassword").attr({"src": "/static/warning.png", "alt": "Warning"}).show();
+            $("#pPassword").text("Caps Lock is on").show();
+            return;
+        }
 
         if (passwd === "") {
             $("#imgPassword").attr({"src": "", "alt": ""}).hide();
             $("#pPassword").text("").hide();
-            return;
-        }
-
-        if ((passwd.toUpperCase() === passwd) && (passwd.toLowerCase() !== passwd) && (!this.shiftKey)) {
-            $("#imgPassword").attr({"src": "/static/warning.png", "alt": "Warning"}).show();
-            $("#pPassword").text("Caps Lock is on").show();
             return;
         }
 
@@ -28,10 +58,8 @@ $(document).ready(function() {
         }
     });
 
-    $("#loginPassword").keyup(function () {
-        var passwd = $("#loginPassword").val();
-
-        if ((passwd.toUpperCase() === passwd) && (passwd.toLowerCase() !== passwd) && (!this.shiftKey)) {
+    $("#loginPassword").keyup(function (e) {
+        if (e.originalEvent.getModifierState("CapsLock")) {
             $("#imgPassword").attr({"src": "/static/warning.png", "alt": "Warning"}).show();
             $("#pPassword").text("Caps Lock is on").show();
         } else {
