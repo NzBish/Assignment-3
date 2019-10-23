@@ -1,27 +1,49 @@
 <?php include "header.phtml" ?>
 <!---------- Body starts --------------->
+<main class="container">
+    <div class="left-column">
+        <h2>Filter</h2>
+        <div class="list-group">
+            <h3>In Stock</h3>
+            <br>
+        </div>
+        <div class="list-group">
+            <h3>Type</h3>
+        </div>
+    </div>
 
-<br>
-<table>
-    <tr>
-        <th>SKU</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Stock on Hand</th>
-        <th>Category</th>
-    </tr>
-    <?php foreach ($products as $prods) { ?>
-        <tr>
-            <td><?= $prods->getSku() ?></td>
-            <td><?= $prods->getName() ?></td>
-            <td><span class = "dollars"><?= $prods->getCost() ?></span></td>
-            <td><?= $prods->getQuantity() ?></td>
-            <td><?= $prods->getCategory() ?></td>
-        </tr>
-    <?php } ?>
-</table>
+    <div class="col-md-9">
+        <br />
+        <div class="row filter_data">
+
+        </div>
+    </div>
 
 
-<br>
+    <div class="right-column">
+        <br>
+        <table>
+            <tr>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Qty Available</th>
+                <th>Category</th>
+            </tr>
+            <?php foreach ($products as $prods) { ?>
+                <tr>
+                    <td><?= $prods->getSku() ?></td>
+                    <td><?= $prods->getName() ?></td>
+                    <td><span class = "dollars"><?= $prods->getCost() ?></span></td>
+                    <td><?= $prods->getQuantity() ?></td>
+                    <td><?= $prods->getCategory() ?></td>
+                </tr>
+            <?php } ?>
+        </table>
+    </div>
+
+
+    <br>
+</main>
 <!---------- Body ends -------------------->
 <?php include "footer.phtml" ?>
