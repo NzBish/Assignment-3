@@ -30,8 +30,7 @@ class SearchController extends Controller
             $view = new View('searchResults');
             echo $view->addData("products", $products)->render();
         } catch (StoreException $ex) {
-            $view = new View('exception');
-            echo $view->addData("exception", $ex)->addData("back", "Home")->render();
+            echo $ex->getMessage();
         }
     }
 }

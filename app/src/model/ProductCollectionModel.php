@@ -13,11 +13,10 @@ class ProductCollectionModel extends Model
     {
         parent::__construct();
         if (!$result = $this->db->query("SELECT `prod_id` FROM `product`;")) {
-
             throw new StoreException(99, 'DB query failed: ' . mysqli_error($this->db));
         }
         if ($result->num_rows < 1) {
-            throw new StoreException(99, 'Product db table is empty');
+            throw new StoreException(99, 'Product table is empty');
         }
         $this->prodIds = array_column($result->fetch_all(), 0);
         $this->N = $result->num_rows;

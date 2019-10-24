@@ -187,8 +187,7 @@ class UserController extends Controller
                 echo "unique";
             }
         } catch (StoreException $ex) {
-            $view = new View('exception');
-            echo $view->addData("exception", $ex)->addData("back", "welcome")->render();
+            echo $ex->getMessage();
         }
     }
 }

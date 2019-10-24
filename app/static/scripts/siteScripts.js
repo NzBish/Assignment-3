@@ -124,7 +124,9 @@ $(document).ready(function() {
     $("#searchProducts").keyup(function() {
         var txt = $(this).val();
 
-        if (txt!=='') {
+        if (txt !== "") {
+            $("#loadingWheel").attr({"src": "/static/loading.gif", "alt": "Loading..."}).show();
+
             $.ajax({
                 url:"/search/retrieve/",
                 method:"post",
@@ -132,10 +134,12 @@ $(document).ready(function() {
                 dataType:"text",
                 success:function (data) {
                     $("#results").html(data);
+                    $("#loadingWheel").attr({"src": "", "alt": ""}).hide();
                 }
             });
         } else {
             $("#results").html('');
+            $("#loadingWheel").attr({"src": "", "alt": ""}).hide();
         }
     });
 });
