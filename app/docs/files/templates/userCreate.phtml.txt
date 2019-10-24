@@ -5,13 +5,19 @@
             <tr>
                 <td><label>Username</label></td>
                 <td><label>
-                        <input name="userName" placeholder="Enter desired username" required>
+                        <input name="userName" id="inputUName" placeholder="Enter desired username" required> <img id="imgUName" src="" alt="" width="16px" height="16px" hidden/> <p id="pUName" hidden></p>
                     </label></td>
             </tr>
             <tr>
                 <td><label>Password</label></td>
                 <td><label>
-                        <input type="password" name="password" placeholder="Enter password"  required>
+                        <input type="password" name="password" id="inputPassword" placeholder="Enter password"  required> <img id="imgPassword" src="" alt="" width="16px" height="16px" hidden /> <p id="pPassword" hidden></p>
+                    </label></td>
+            </tr>
+            <tr>
+                <td><label>Re-enter Password</label></td>
+                <td><label>
+                        <input type="password" name="password2" id="inputPassword2" placeholder="Re-enter password"  required> <img id="imgPassword2" src="" alt="" width="16px" height="16px" hidden /> <p id="pPassword2" hidden></p>
                     </label></td>
             </tr>
             <tr>
@@ -32,21 +38,10 @@
                         <input name="email" placeholder="Enter your email address" required>
                     </label></td>
             </tr>
-            <tr>
-                <td><label>Phone Number</label></td>
-                <td><label>
-                        <input name="phone" placeholder="Enter your phone number" required>
-                    </label></td>
-            </tr>
-            <tr>
-                <td><label>Date of Birth</label></td>
-                <td><label>
-                        <input type="date" name="dob" required>
-                    </label></td>
-            </tr>
+
             <tr>
                 <td></td>
-                <td><button name="create" type="submit" class="btn btn-default" value="submit">Create</button></td>
+                <td><button name="create" id="createButton" type="submit" class="btn btn-default" value="submit">Create</button></td>
             </tr>
         </table>
     </form>

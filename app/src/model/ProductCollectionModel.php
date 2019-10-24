@@ -4,11 +4,25 @@ namespace ktc\a2\model;
 use ktc\a2\Exception\StoreException;
 
 
+/**
+ * Class ProductCollectionModel
+ * @package ktc\a2\model
+ */
 class ProductCollectionModel extends Model
 {
+    /**
+     * @var array
+     */
     private $prodIds;
+    /**
+     * @var int
+     */
     private $N;
 
+    /**
+     * ProductCollectionModel constructor.
+     * @throws StoreException
+     */
     public function __construct()
     {
         parent::__construct();
@@ -22,6 +36,10 @@ class ProductCollectionModel extends Model
         $this->N = $result->num_rows;
     }
 
+    /**
+     * @return \Generator
+     * @throws StoreException
+     */
     public function getProducts()
     {
         foreach ($this->prodIds as $id) {

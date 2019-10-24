@@ -15,6 +15,9 @@ use ktc\a2\view\View;
 class HomeController extends Controller
 {
 
+    /**
+     *open welcome page
+     */
     public function indexAction()
     {
         session_start();

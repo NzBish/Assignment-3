@@ -173,7 +173,7 @@ class UserModel extends Model
      *
      * @param string $name Username
      * @return bool True if the specified username is already present
-     * @throws StoreException on database errors
+     * @throws StoreException
      */
     public function check($name)
     {
@@ -193,7 +193,7 @@ class UserModel extends Model
      *
      * @param string $name Username
      * @return $this A UserModel
-     * @throws StoreException on database connection errors
+     * @throws StoreException
      */
     public function load($name)
     {
@@ -224,7 +224,7 @@ class UserModel extends Model
      * Saves user information from this UserModel into the database
      *
      * @return $this A UserModel
-     * @throws StoreException on database connection errors
+     * @throws StoreException
      */
     public function save()
     {

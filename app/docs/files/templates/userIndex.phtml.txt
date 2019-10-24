@@ -8,8 +8,6 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-        <th>Phone</th>
-        <th>DOB</th>
     </tr>
     <?php foreach ($users as $user) { ?>
         <tr>
@@ -18,8 +16,6 @@
             <td><?= $user->getFirstName() ?></td>
             <td><?= $user->getLastName() ?></td>
             <td><?= $user->getEmail() ?></td>
-            <td><?= $user->getPhone() ?></td>
-            <td><?= $user->getDateOfBirth() ?></td>
         </tr>
     <?php } ?>
 </table>

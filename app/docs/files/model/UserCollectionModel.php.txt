@@ -1,7 +1,7 @@
 <?php
 namespace ktc\a2\model;
 
-use ktc\a2\Exception\BankException;
+use ktc\a2\Exception\StoreException;
 
 /**
  * Class UserCollectionModel
@@ -29,16 +29,16 @@ class UserCollectionModel extends Model
      *
      * Creates a UserCollectionModel, which is used to create a generator for UserModels
      *
-     * @throws BankException on database connection errors or lack of users in the User table
+     * @throws StoreException on database connection errors or lack of users in the User table
      */
     public function __construct()
     {
         parent::__construct();
         if (!$result = $this->db->query("SELECT `user_name` FROM `user`;")) {
-            throw new BankException(99, 'DB query failed: ' . mysqli_error($this->db));
+            throw new StoreException(99, 'DB query failed: ' . mysqli_error($this->db));
         }
         if ($result->num_rows < 1) {
-            throw new BankException(99, 'User db table is empty');
+            throw new StoreException(99, 'User db table is empty');
         }
         $this->userNames = array_column($result->fetch_all(), 0);
         $this->N = $result->num_rows;
@@ -49,9 +49,9 @@ class UserCollectionModel extends Model
      *
      * A generator function yielding one UserModel per ID in $userNames
      *
-     * @uses \ktc\a2\model\UserCollectionModel::$userNames to create UserModels
      * @return \Generator|UserModel[] Users
-     * @throws BankException via UserModel->load
+     * @throws StoreException via UserModel->load
+     *@uses \ktc\a2\model\UserCollectionModel::$userNames to create UserModels
      */
     public function getUsers()
     {

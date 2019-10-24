@@ -1,0 +1,17 @@
+<?php include "header.phtml" ?>
+<!---------- Body starts --------------->
+<br>
+<br>
+<br>
+
+    <form id="searchForm" action="" autocomplete="off">
+        <label for="search">Search for a Product:</label>
+        <input type="text" name="search" id="searchProducts">
+    </form>
+
+    <img id="loadingWheel" src="" alt="" width="64px" height="64px" hidden>
+    <div id="results"></div>
+
+<br>
+<!---------- Body ends -------------------->
+<?php include "footer.phtml" ?>

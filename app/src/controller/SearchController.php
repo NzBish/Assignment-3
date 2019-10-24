@@ -5,8 +5,17 @@ use ktc\a2\Exception\StoreException;
 use ktc\a2\model\SearchCollectionModel;
 use ktc\a2\view\View;
 
+/**
+ * Class SearchController
+ * @package ktc\a2\controller
+ */
 class SearchController extends Controller
 {
+
+
+    /**
+     *Search for a product
+     */
     public function searchAction()
     {
         session_start();
@@ -19,6 +28,10 @@ class SearchController extends Controller
         }
     }
 
+
+    /**
+     *Retrieve a product
+     */
     public function retrieveAction()
     {
         if (!isset($_POST['search'])) {
@@ -34,5 +47,3 @@ class SearchController extends Controller
         }
     }
 }
-
-

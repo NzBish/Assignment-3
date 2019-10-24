@@ -1,0 +1,20 @@
+<!---------- Body starts --------------->
+<table>
+    <tr>
+        <th>SKU</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Stock on Hand</th>
+    </tr>
+    <?php foreach ($products as $product) { ?>
+        <tr>
+            <td><?= $product->getSku() ?></td>
+            <td><?= $product->getName() ?></td>
+            <td><?= $product->getCost() ?></td>
+            <td><?= $product->getCategory() ?></td>
+            <td><?= $product->getQuantity() ?></td>
+        </tr>
+    <?php } ?>
+</table>
+<!---------- Body ends -------------------->

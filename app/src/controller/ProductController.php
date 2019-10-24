@@ -17,6 +17,9 @@ use ktc\a2\view\View;
 
 class ProductController extends Controller
 {
+    /**
+     *returns a list of products
+     */
     public function indexAction()
     {
         session_start();

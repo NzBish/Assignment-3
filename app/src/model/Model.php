@@ -42,7 +42,7 @@ class Model
         );
 
         if (!$this->db) {
-            throw new StoreException(99,$this->db->connect_error);
+            throw new StoreException(99, $this->db->connect_error);
         }
 
         /**
@@ -62,9 +62,9 @@ class Model
                                         `user_name` VARCHAR(30) UNIQUE NOT NULL,
                                         `user_first` VARCHAR(30) NOT NULL, 
                                         `user_last` VARCHAR(30) NOT NULL,
-                                        `user_pass` VARCHAR(72) NOT NULL,                         
-                                        `user_email` VARCHAR(50) NOT NULL,                                                        
-                                         Primary key (user_id));";
+                                        `user_pass` VARCHAR(72) NOT NULL,
+                                        `user_email` VARCHAR(50) NOT NULL,
+                                        Primary key (user_id));";
 
 
         $databaseProduct = "CREATE TABLE `product` (
@@ -116,13 +116,13 @@ class Model
     public function buildTableData()
     {
         if (!$password = password_hash("1111", PASSWORD_BCRYPT)) {
-            throw new StoreException(99,"Failed to hash entered password");
+            throw new StoreException(99, "Failed to hash entered password");
         }
         if (!$admin = password_hash("admin", PASSWORD_BCRYPT)) {
-            throw new StoreException(99,"Failed to hash entered password");
+            throw new StoreException(99, "Failed to hash entered password");
         }
         if (!$tim = password_hash("TheToolman", PASSWORD_BCRYPT)) {
-            throw new StoreException(99,"Failed to hash entered password");
+            throw new StoreException(99, "Failed to hash entered password");
         }
 
         /** Strings to insert */
@@ -157,7 +157,6 @@ class Model
             if (!$this->db->query($insertProduct)) {
                 throw new StoreException(99, "Failed creating sample product data! " . mysqli_error($this->db));
             }
-
         }
     }
 

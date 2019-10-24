@@ -1,7 +1,7 @@
 {
-  "name": "ktc/a2",
+  "name": "ktc/a3",
   "version": "0.0.1",
-  "description": "Massey University Internet Programming 159.339 Assignment 2",
+  "description": "Massey University Internet Programming 159.339 Assignment 3",
   "repositories": [
     { "type": "vcs", "url": "https://github.com/agnz/PHP-Router" }
   ],

@@ -4,74 +4,136 @@ namespace ktc\a2\model;
 use ktc\a2\Exception\StoreException;
 
 
+/**
+ * Class ProductModel
+ * @package ktc\a2\model
+ */
 class ProductModel extends Model
 {
 
+    /**
+     * @var
+     */
     private $id;
 
+    /**
+     * @var
+     */
     private $sku;
 
+    /**
+     * @var
+     */
     private $name;
 
+    /**
+     * @var
+     */
     private $cost;
 
+    /**
+     * @var
+     */
     private $category;
 
+    /**
+     * @var
+     */
     private $quantity;
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getSku()
     {
         return $this->sku;
     }
 
+    /**
+     * @param $sku
+     * @return $this
+     */
     public function setSku($sku)
     {
         $this->sku = $sku;
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * @param $name
+     * @return $this
+     */
     public function setName($name)
     {
         $this->name = $name;
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCost()
     {
         return $this->cost;
     }
+
+    /**
+     * @param $cost
+     * @return $this
+     */
     public function setCost($cost)
     {
         $this->cost = $cost;
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCategory()
     {
         return $this->category;
     }
 
+    /**
+     * @param $category
+     * @return $this
+     */
     public function setCategory($category)
     {
         $this->category = $category;
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
     public function getQuantity()
     {
         return $this->quantity;
     }
 
+    /**
+     * @param $quantity
+     * @return $this
+     */
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
@@ -79,13 +141,18 @@ class ProductModel extends Model
         return $this;
     }
 
+    /**
+     * @param $id
+     * @return $this
+     * @throws StoreException
+     */
     public function load($id)
     {
         if (!$result = $this->db->query("SELECT * FROM `product` WHERE `prod_id` = $id;")) {
-            throw new StoreException(99, 'DB query failed: '.mysqli_error($this->db));
+            throw new StoreException(99, 'DB query failed: ' . mysqli_error($this->db));
         }
         if ($result->num_rows < 1) {
-            throw new StoreException(99, 'No product found with ID '.$id);
+            throw new StoreException(99, 'No product found with ID ' . $id);
         }
         if ($result->num_rows == 1) {
             $result = $result->fetch_assoc();
@@ -102,6 +169,10 @@ class ProductModel extends Model
         return $this;
     }
 
+    /**
+     * @return $this
+     * @throws StoreException
+     */
     public function save()
     {
         $id = $this->id;
