@@ -6,11 +6,8 @@ use ktc\a2\Exception\StoreException;
 
 class ProductCollectionModel extends Model
 {
-
     private $prodIds;
-
     private $N;
-
 
     public function __construct()
     {
@@ -26,7 +23,6 @@ class ProductCollectionModel extends Model
         $this->N = $result->num_rows;
     }
 
-
     public function getProducts()
     {
         foreach ($this->prodIds as $id) {
@@ -35,6 +31,4 @@ class ProductCollectionModel extends Model
             yield (new ProductModel())->load($id);
         }
     }
-
-
 }

@@ -135,7 +135,7 @@ $(document).ready(function() {
                 }
             });
         } else {
-            $("tbody").html('');
+            $("#results").html('');
         }
     });
 });

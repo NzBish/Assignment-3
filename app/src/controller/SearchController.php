@@ -21,20 +21,17 @@ class SearchController extends Controller
 
     public function retrieveAction()
     {
-        session_start();
-
-        if (isset($_SESSION['userName'])) {
-            try {
-                $collection = new SearchCollectionModel($_POST["search"]);
-                $products = $collection->getResults();
-                $view = new View('searchResults');
-                echo $view->addData("products", $products)->render();
-            } catch (StoreException $ex) {
-                $view = new View('exception');
-                echo $view->addData("exception", $ex)->addData("back", "Home")->render();
-            }
-        } else {
-            $this->redirect('Home');
+        if (!isset($_POST['search'])) {
+            $this->redirect('welcome');
+        }
+        try {
+            $collection = new SearchCollectionModel($_POST['search']);
+            $products = $collection->getResults();
+            $view = new View('searchResults');
+            echo $view->addData("products", $products)->render();
+        } catch (StoreException $ex) {
+            $view = new View('exception');
+            echo $view->addData("exception", $ex)->addData("back", "Home")->render();
         }
     }
 }

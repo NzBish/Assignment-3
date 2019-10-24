@@ -97,6 +97,9 @@ tr:hover { background-color: #d7ebf5; }
     content:'$';
 }
 
+.searchForm {
+    text-align: center;
+}
 
 div {
     width: auto;

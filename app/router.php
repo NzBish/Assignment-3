@@ -85,22 +85,22 @@ $collection->attachRoute(
 
 $collection->attachRoute(
     new Route(
-        '/search/retrieve/',
+        '/search/',
         array(
-            '_controller' => 'ktc\a2\controller\SearchController::retrieveAction',
-            'methods' => 'POST',
-            'name' => 'searchRetrieve'
+            '_controller' => 'ktc\a2\controller\SearchController::searchAction',
+            'methods' => array('GET','POST'),
+            'name' => 'search'
         )
     )
 );
 
 $collection->attachRoute(
     new Route(
-        '/search/',
+        '/search/retrieve/',
         array(
-            '_controller' => 'ktc\a2\controller\SearchController::searchAction',
-            'methods' => array('GET','POST'),
-            'name' => 'search'
+            '_controller' => 'ktc\a2\controller\SearchController::retrieveAction',
+            'methods' => 'POST',
+            'name' => 'searchRetrieve'
         )
     )
 );

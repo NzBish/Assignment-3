@@ -17,8 +17,6 @@ use ktc\a2\view\View;
 
 class ProductController extends Controller
 {
-
-
     public function indexAction()
     {
         session_start();
@@ -36,6 +34,4 @@ class ProductController extends Controller
             $this->redirect('Home');
         }
     }
-
-
 }
