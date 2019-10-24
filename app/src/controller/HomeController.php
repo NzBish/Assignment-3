@@ -19,7 +19,7 @@ class HomeController extends Controller
     {
         session_start();
         if (isset($_SESSION['userName'])) {
-            $view = new View('userWelcome');
+            $view = new View('welcome');
             echo $view->render();
         } else {
             $this->redirect('userLogin');

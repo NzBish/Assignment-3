@@ -121,26 +121,21 @@ $(document).ready(function() {
         }
     });
 
-    $("#searchProducts").keyup(function(){
+    $("#searchProducts").keyup(function() {
         var txt = $(this).val();
-        if(txt!=='')
-        {
+
+        if (txt!=='') {
             $.ajax({
-                url:"/retrieve",
+                url:"/search/retrieve/",
                 method:"post",
-                data:{search:txt},
+                data:{search: txt},
                 dataType:"text",
-                success:function (data)
-                {
+                success:function (data) {
                     $("#results").html(data);
                 }
             });
-
-        }
-        else
-        {
+        } else {
             $("tbody").html('');
-
         }
     });
 });

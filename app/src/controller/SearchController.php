@@ -7,41 +7,35 @@ use ktc\a2\view\View;
 
 class SearchController extends Controller
 {
-    public function searchAction(){
-         session_start();
-        $output ='';
+    public function searchAction()
+    {
+        session_start();
 
-          if (isset($_SESSION['userName'])) {
-        try {
-            $collection = new SearchCollectionModel();
-            $products = $collection->retrieveProduct($_POST["search"]);
-            $output .= "<table>
-        <tr>
-            <th>SKU</th>
-            <th>Name</th>
-            <th>Price</th>            
-            <th>Category</th>
-            <th>Stock on Hand</th>
-        </tr>";
-
-            foreach ($products as $prods){
-                $output .= "
-                        <tr>
-                            <td>$prods[1]</td>
-                            <td>$prods[2]</td>
-                            <td>$prods[3]</td>
-                            <td>$prods[4]</td>
-                            <td>$prods[5]</td>
-                            </tr>";
-            }
-            echo $output;
-        } catch (StoreException $ex) {
-            $view = new View('exception');
-            echo $view->addData("exception", $ex)->addData("back", "Home")->render();
+        if (isset($_SESSION['userName'])) {
+            $view = new View('search');
+            echo $view->render();
+        } else {
+            $this->redirect('userLogin');
         }
-           } else {
-             $this->redirect('Home');
-          }
+    }
+
+    public function retrieveAction()
+    {
+        session_start();
+
+        if (isset($_SESSION['userName'])) {
+            try {
+                $collection = new SearchCollectionModel($_POST["search"]);
+                $products = $collection->getResults();
+                $view = new View('searchResults');
+                echo $view->addData("products", $products)->render();
+            } catch (StoreException $ex) {
+                $view = new View('exception');
+                echo $view->addData("exception", $ex)->addData("back", "Home")->render();
+            }
+        } else {
+            $this->redirect('Home');
+        }
     }
 }
 

@@ -46,7 +46,7 @@ class UserController extends Controller
                     echo $view->addData("exception", $ex)->addData("back", "Home")->render();
                 }
             } else {
-                $this->redirect('userWelcome');
+                $this->redirect('welcome');
             }
         } else {
             $this->redirect('userLogin');
@@ -79,7 +79,7 @@ class UserController extends Controller
                     $_SESSION['userName'] = $user->getUserName();
                     $_SESSION['userId'] = $user->getId();
                     $_SESSION['userFull'] = $user->getFirstName() . " " . $user->getLastName();
-                    $this->redirect('userWelcome');
+                    $this->redirect('welcome');
                 } else {
                     throw new StoreException(4); // Maybe not an exception?
                 }
@@ -153,7 +153,7 @@ class UserController extends Controller
                 $_SESSION['userName'] = $user->getUserName();
                 $_SESSION['userId'] = $user->getId();
                 $_SESSION['userFull'] = $user->getFirstName() . " " . $user->getLastName();
-                $this->redirect('userWelcome');
+                $this->redirect('welcome');
             } else {
                 $view = new View('userCreate');
                 echo $view->render();
@@ -177,7 +177,7 @@ class UserController extends Controller
     public function checkAction()
     {
         if (!isset($_POST['checkName'])) {
-            $this->redirect('userWelcome');
+            $this->redirect('welcome');
         }
         try {
             $user = new UserModel();
@@ -188,21 +188,7 @@ class UserController extends Controller
             }
         } catch (StoreException $ex) {
             $view = new View('exception');
-            echo $view->addData("exception", $ex)->addData("back", "userWelcome")->render();
-        }
-    }
-
-    public function searchAction()
-    {
-
-        session_start();
-
-        if (isset($_SESSION['userName'])) {
-            $view = new View('search');
-            echo $view->render();
-        } else {
-            $view = new View('userLogin');
-            echo $view->render();
+            echo $view->addData("exception", $ex)->addData("back", "welcome")->render();
         }
     }
 }

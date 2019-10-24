@@ -6,20 +6,30 @@ use ktc\a2\Exception\StoreException;
 
 class SearchCollectionModel extends Model
 {
+    private $prodIds;
+    private $N;
 
-    public function __construct()
+    public function __construct($name)
     {
         parent::__construct();
-    }
-
-
-    public function retrieveProduct($name)
-    {
-        if (!$result = $this->db->query("SELECT * FROM `product`
+        if (!$result = $this->db->query("SELECT `prod_id`, `prod_sku` FROM `product`
                                                 WHERE `prod_name` LIKE '%$name%'
-                                                ORDER by `prod_sku` ASC;")) {
+                                                ORDER BY `prod_sku` ASC;")) {
             throw new StoreException(99, 'No product found');
         }
-        return $result->fetch_all();
+        if ($result->num_rows < 1) {
+            throw new StoreException(99, 'Product db table is empty');
+        }
+        $this->prodIds = array_column($result->fetch_all(), 0);
+        $this->N = $result->num_rows;
+    }
+
+    public function getResults()
+    {
+        foreach ($this->prodIds as $id) {
+            // Use a generator to save on memory/resources
+            // load accounts from DB one at a time only when required
+            yield (new ProductModel())->load($id);
+        }
     }
 }
