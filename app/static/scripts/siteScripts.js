@@ -1,4 +1,15 @@
 $(document).ready(function() {
+    /**
+     * Username validity check
+     *
+     * Uses Regex and AJAX to confirm if the username the user is entering:
+     * - Contains only alphanumeric characters (Regex)
+     * - Is not already in use (AJAX)
+     * Changes the contents of #imgUName and #pUName depending on the result of these tests
+     * Also enables or disables #createButton depending on the results
+     *
+     * @uses $("#inputUName").val() The text content of the #inputUName input field
+     */
     $("#inputUName").keyup(function() {
         var regExpr = new RegExp(/^([a-zA-Z0-9]+)$/);
         var uname = $("#inputUName").val();
@@ -37,6 +48,21 @@ $(document).ready(function() {
         }
     });
 
+    /**
+     * Password validity check 1
+     *
+     * Checks if CapsLock is on and alerts the user if so
+     * Uses Regex to confirm if the password the user is entering meets requirements
+     * If so, checks if the user has entered anything in the second password field, and either:
+     * - Calls #("#inputPassword2").keyup
+     * or:
+     * - Alerts the user that they need to re-enter their password in this field
+     * Changes the contents of #imgPassword, #imgPassword2, and #pPassword depending on the result of these tests
+     * Also enables or disables #createButton depending on the results
+     *
+     * @uses $("#inputPassword").val() The text content of the #inputPassword input field
+     * @uses $("#inputPassword2").val() The text content of the #inputPassword2 input field
+     */
     $("#inputPassword").keyup(function(e) {
         var regExpr = new RegExp(/^(?=[a-zA-Z0-9]*[A-Z][a-zA-Z0-9]*)([a-zA-Z0-9]{7,14})$/);
         var passwd = $("#inputPassword").val();
@@ -75,6 +101,19 @@ $(document).ready(function() {
         }
     });
 
+    /**
+     * Password validity check 2
+     *
+     * Checks if CapsLock is on and alerts the user if so
+     * If the contents of #inputPassword2 are not empty:
+     * - Checks if #pPassword contains a specific error and does nothing if so
+     * - Checks if the contents of #inputPassword and #inputPassword2 match
+     * Changes the contents of #imgUName and #pUName depending on the result of these tests
+     * Also enables or disables #createButton depending on the results
+     *
+     * @uses $("#inputPassword").val() The text content of the #inputPassword input field
+     * @uses $("#inputPassword2").val() The text content of the #inputPassword2 input field
+     */
     $("#inputPassword2").keyup(function (e) {
         var passwd = $("#inputPassword").val();
         var passwd2 = $("#inputPassword2").val();
@@ -111,6 +150,12 @@ $(document).ready(function() {
         $("#pPassword2").text("").hide();
     });
 
+    /**
+     * Login password CapsLock check
+     *
+     * Checks if CapsLock is on and alerts the user if so
+     * Changes the contents of #imgPassword and #pPassword depending on the result of this test
+     */
     $("#loginPassword").keyup(function (e) {
         if (e.originalEvent.getModifierState("CapsLock")) {
             $("#imgPassword").attr({"src": "/static/warning.png", "alt": "Warning"}).show();
@@ -121,6 +166,17 @@ $(document).ready(function() {
         }
     });
 
+    /**
+     * Search results asynchronous loading
+     *
+     * Uses AJAX to load in a search result table of products based on what the user has entered so far
+     * Changes the content of #loadingWheel to either be hidden or contain the loading wheel .gif image depending
+     * on the status of the current AJAX request
+     * Changes the content of #results to contain either this table, an error message, or nothing depending on the
+     * user's input
+     *
+     * @uses $(this).val() The text content of the #searchProducts input field
+     */
     $("#searchProducts").keyup(function() {
         var txt = $(this).val();
 
