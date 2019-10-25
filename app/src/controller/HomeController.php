@@ -16,7 +16,14 @@ class HomeController extends Controller
 {
 
     /**
-     *open welcome page
+     * Home Index action
+     *
+     * Depending on login status, either:
+     * - Constructs a welcome page from template
+     * or:
+     * - Redirects to UserController::loginAction
+     *
+     * @uses $_SESSION['userName'] to determine if a user is logged in
      */
     public function indexAction()
     {

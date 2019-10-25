@@ -17,8 +17,17 @@ use ktc\a2\view\View;
 
 class ProductController extends Controller
 {
+
     /**
-     *returns a list of products
+     * Product Index action
+     *
+     * Depending on login status, either:
+     * - Builds a ProductCollectionModel containing all available products
+     * - Constructs and displays a productIndex template with the generated ProductModels
+     * or:
+     * - Redirects to HomeController::indexAction
+     *
+     * @uses $_SESSION['userName'] to determine if a user is logged in
      */
     public function indexAction()
     {

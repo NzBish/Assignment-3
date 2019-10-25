@@ -51,7 +51,7 @@ class UserCollectionModel extends Model
      *
      * @return \Generator|UserModel[] Users
      * @throws StoreException via UserModel->load
-     *@uses \ktc\a2\model\UserCollectionModel::$userNames to create UserModels
+     * @uses \ktc\a2\model\UserCollectionModel::$userNames to create UserModels
      */
     public function getUsers()
     {

@@ -116,13 +116,13 @@ class Model
     public function buildTableData()
     {
         if (!$password = password_hash("1111", PASSWORD_BCRYPT)) {
-            throw new StoreException(99, "Failed to hash entered password");
+            throw new StoreException(6);
         }
         if (!$admin = password_hash("admin", PASSWORD_BCRYPT)) {
-            throw new StoreException(99, "Failed to hash entered password");
+            throw new StoreException(6);
         }
         if (!$tim = password_hash("TheToolman", PASSWORD_BCRYPT)) {
-            throw new StoreException(99, "Failed to hash entered password");
+            throw new StoreException(6);
         }
 
         /** Strings to insert */

@@ -12,37 +12,39 @@ class ProductModel extends Model
 {
 
     /**
-     * @var
+     * @var int Product ID
      */
     private $id;
 
     /**
-     * @var
+     * @var string Product SKU
      */
     private $sku;
 
     /**
-     * @var
+     * @var string Product name
      */
     private $name;
 
     /**
-     * @var
+     * @var double Product price
      */
     private $cost;
 
     /**
-     * @var
+     * @var string Product category
      */
     private $category;
 
     /**
-     * @var
+     * @var int Product quantity
      */
     private $quantity;
 
     /**
-     * @return mixed
+     * Get Product ID
+     *
+     * @return int Product ID
      */
     public function getId()
     {
@@ -50,7 +52,9 @@ class ProductModel extends Model
     }
 
     /**
-     * @return mixed
+     * Get Product SKU
+     *
+     * @return string Product SKU
      */
     public function getSku()
     {
@@ -58,17 +62,21 @@ class ProductModel extends Model
     }
 
     /**
-     * @param $sku
-     * @return $this
+     * Set Product SKU
+     *
+     * @param string $sku The new SKU
+     * @return $this A ProductModel
      */
     public function setSku($sku)
     {
-        $this->sku = $sku;
+        $this->sku = mysqli_real_escape_string($this->db, $sku);
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get Product name
+     *
+     * @return string Product name
      */
     public function getName()
     {
@@ -76,17 +84,21 @@ class ProductModel extends Model
     }
 
     /**
-     * @param $name
-     * @return $this
+     * Set Product name
+     *
+     * @param string $name The new Product name
+     * @return $this A ProductModel
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = mysqli_real_escape_string($this->db, $name);
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get Product cost
+     *
+     * @return double Product cost
      */
     public function getCost()
     {
@@ -94,8 +106,10 @@ class ProductModel extends Model
     }
 
     /**
-     * @param $cost
-     * @return $this
+     * Set Product cost
+     *
+     * @param double $cost The new Product cost
+     * @return $this A ProductModel
      */
     public function setCost($cost)
     {
@@ -104,7 +118,9 @@ class ProductModel extends Model
     }
 
     /**
-     * @return mixed
+     * Get Product category
+     *
+     * @return string Product category
      */
     public function getCategory()
     {
@@ -112,18 +128,22 @@ class ProductModel extends Model
     }
 
     /**
-     * @param $category
-     * @return $this
+     * Set Product category
+     *
+     * @param string $category The new Product category
+     * @return $this A ProductModel
      */
     public function setCategory($category)
     {
-        $this->category = $category;
+        $this->category = mysqli_real_escape_string($this->db, $category);
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * Get Product quantity
+     *
+     * @return int Product quantity
      */
     public function getQuantity()
     {
@@ -131,8 +151,10 @@ class ProductModel extends Model
     }
 
     /**
-     * @param $quantity
-     * @return $this
+     * Set Product quantity
+     *
+     * @param int $quantity The new Product quantity
+     * @return $this A ProductModel
      */
     public function setQuantity($quantity)
     {
@@ -142,8 +164,12 @@ class ProductModel extends Model
     }
 
     /**
-     * @param $id
-     * @return $this
+     * Product load
+     *
+     * Loads product information from the database into this ProductModel
+     *
+     * @param int $id Product ID
+     * @return $this A ProductModel
      * @throws StoreException
      */
     public function load($id)
@@ -170,7 +196,11 @@ class ProductModel extends Model
     }
 
     /**
-     * @return $this
+     * Product save
+     *
+     * Saves product information from this ProductModel into the database
+     *
+     * @return $this A ProductModel
      * @throws StoreException
      */
     public function save()

@@ -142,7 +142,7 @@ class UserController extends Controller
                 $user->setFirstName($_POST['firstName']);
                 $user->setLastName($_POST['lastName']);
                 if (preg_match('/^(?=[a-zA-Z0-9]*[A-Z][a-zA-Z0-9]*)([a-zA-Z0-9]{7,14})$/', $_POST['password']) === 0) {
-                    throw new StoreException(99, "Password does not meet requirements");
+                    throw new StoreException(9);
                 }
                 if (!$passHash = password_hash($_POST['password'], PASSWORD_BCRYPT)) {
                     throw new StoreException(6);
@@ -171,6 +171,7 @@ class UserController extends Controller
      * - Echoes back "unique" if the username is not in use
      * or:
      * - Echoes back "not unique" if the username is in use
+     * If there is an error, echoes back this instead
      *
      * @uses $_POST['checkName'] to determine which username to check for
      */

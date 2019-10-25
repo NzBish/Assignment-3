@@ -3,7 +3,7 @@
 namespace ktc\a2\Exception;
 
 /**
- * Class BankException
+ * Class SearchException
  *
  * @package ktc/a2
  * @author  K. Dempsey
@@ -14,9 +14,9 @@ namespace ktc\a2\Exception;
 class StoreException extends \Exception
 {
     /**
-     * BankException constructor
+     * SearchException constructor
      *
-     * Creates a BankException and sets $message if $code is a known error
+     * Creates a SearchException and sets $message if $code is a known error
      *
      * @param int $code Sets $code in the created object
      * @param string $message Sets $message in the created object
@@ -24,18 +24,6 @@ class StoreException extends \Exception
     public function __construct($code = 0, $message = "")
     {
         switch ($code) {
-            case 0:
-                $message = 'Failed to load account';
-                break;
-            case 1:
-                $message = 'Invalid Transaction Type';
-                break;
-            case 2:
-                $message = 'Invalid Amount';
-                break;
-            case 3:
-                $message = 'Insufficient Balance';
-                break;
             case 4:
                 $message = 'Invalid username or password';
                 break;
@@ -52,7 +40,7 @@ class StoreException extends \Exception
                 $message = 'User is not logged in';
                 break;
             case 9:
-                $message = 'You don\'t have any accounts yet';
+                $message = 'Password does not meet requirements';
                 break;
             default:
                 $code = 99;

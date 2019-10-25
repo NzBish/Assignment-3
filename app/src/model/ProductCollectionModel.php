@@ -11,17 +11,20 @@ use ktc\a2\Exception\StoreException;
 class ProductCollectionModel extends Model
 {
     /**
-     * @var array
+     * @var array Contains product IDs for lookup in ProductCollectionModel::getProducts
      */
     private $prodIds;
     /**
-     * @var int
+     * @var int The number of indices in $prodIds
      */
     private $N;
 
     /**
-     * ProductCollectionModel constructor.
-     * @throws StoreException
+     * ProductCollectionModel constructor
+     *
+     * Creates a ProductCollectionModel, which is used to create a generator for ProductModels
+     *
+     * @throws StoreException on database connection errors or lack of products in the Product table
      */
     public function __construct()
     {
@@ -37,8 +40,13 @@ class ProductCollectionModel extends Model
     }
 
     /**
-     * @return \Generator
-     * @throws StoreException
+     * Get products
+     *
+     * A generator function yielding one ProductModel per ID in $prodIds
+     *
+     * @return \Generator|ProductModel[] Products
+     * @throws StoreException via ProductModel->load
+     * @uses \ktc\a2\model\SearchCollectionModel::$prodIds to create ProductModels
      */
     public function getProducts()
     {
